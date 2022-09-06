@@ -4,6 +4,7 @@ const intialState = {
   numOfCakes: 10,
 };
 
+//Ties up store an action together.
 const cakeReducer = (state = intialState, action: any) => {
   switch (action.type) {
     case BUY_CAKE:
