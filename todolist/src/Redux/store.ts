@@ -7,5 +7,7 @@ import thunk from "redux-thunk";
 // }
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
-
+store.subscribe(() => {
+    console.log(store.getState());
+  });
 export default store;

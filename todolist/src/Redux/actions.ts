@@ -9,17 +9,37 @@ const getTodos = (Todos: any) => {
   };
 };
 
+// const todosDeleted = (id) => {
+//   return { type: types.DELETE_TODOS };
+// };
+
 //Dispatcher here to dispatch the action
 export const loadTodos = () => {
   return function (dispatch: any) {
     axios
       .get(`http://localhost:8080/todos`)
-      .then((res) => {
-        console.log("response", res.data);
-        dispatch(getTodos(res.data));
+      .then((response) => {
+        console.log("response", response.data);
+        const Todos = response.data;
+        dispatch(getTodos(Todos));
       })
       .catch((error) => {
         console.log(error);
       });
   };
 };
+
+// export const deleteTodos = (id: any) => {
+//   return function (dispatch: any) {
+//     dispatch()
+//     axios
+//       .delete(`http://localhost:8080/todos`)
+//       .then((res) => {
+//         console.log("response", res.data);
+//         dispatch(todosDeleted());
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//       });
+//   };
+// };

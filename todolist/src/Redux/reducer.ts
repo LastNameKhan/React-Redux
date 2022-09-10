@@ -2,7 +2,6 @@ import * as types from "./actionsTypes";
 
 const intialState = {
   Todos: [],
-  Todo: {},
   loading: false,
 };
 
@@ -12,6 +11,16 @@ const TodoReducers = (state = intialState, action: any) => {
       return {
         ...state,
         Todos: action.payload,
+        loading: false,
+      };
+      case types.DELETE_TODOS:
+      return {
+        ...state,
+        loading: false,
+      };
+      case types.EDIT_TODOS:
+      return {
+        ...state,
         loading: false,
       };
     default:

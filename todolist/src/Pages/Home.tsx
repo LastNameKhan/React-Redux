@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { loadTodos } from "../Redux/actions";
 import { connect } from "react-redux";
+import { useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import {
   Table,
@@ -10,26 +11,23 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Button,
 } from "@mui/material";
 
-function createData(name: string) {
-  return { name };
-}
+// componentDidMount = () => {
+//   const { dispatch } = this.props;
+//   console.log("ComponentDidMount");
+// };
 
-const rows = [
-  createData("Frozen yoghurt"),
-  createData("Ice cream sandwich"),
-  createData("Eclair"),
-  createData("Cupcake"),
-  createData("Gingerbread"),
-];
-
-componentDidMount () {
-    const {dispatch} = this.props
-  console.log("ComponentDidMount")
-};
+// const handleDelte = (id) => {
+//   dispatchEvent(deleteTodos);
+// };
 
 class Home extends Component {
+  componentDidMount() {
+    const { dispatch, loadTodos } = this.props;
+  }
+
   render() {
     return (
       <div>
@@ -40,15 +38,19 @@ class Home extends Component {
                 <TableCell align="center">Todo List</TableCell>
               </TableRow>
             </TableHead>
-            {/* <TableBody>
+            <TableBody>
               {Todos.map((Todo) => (
                 <TableRow key={Todo.id}>
                   <TableCell align="center" component="th" scope="row">
-                    {Todo.tile}
+                    {Todo.title}
+                  </TableCell>
+                  <TableCell align="center" component="th" scope="row">
+                    <Button>Delete</Button>
+                    <Button>Edit</Button>
                   </TableCell>
                 </TableRow>
               ))}
-            </TableBody> */}
+            </TableBody>
           </Table>
         </TableContainer>
       </div>
